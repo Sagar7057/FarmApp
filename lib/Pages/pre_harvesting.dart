@@ -1,3 +1,4 @@
+import 'package:farm/Pages/fertilizer_detection.dart';
 import 'package:flutter/material.dart';
 
 import '../style/button_style.dart';
@@ -45,7 +46,15 @@ class _PreHarvestingState extends State<PreHarvesting> {
                 child: const Text(
                   'Fertilizer Detection', 
                 ), 
-                onPressed: () {},  
+                onPressed: () {
+                  Navigator.push(
+                     context, MaterialPageRoute(
+                       builder: (context) {
+                        return const Center(child: FertilizerDetection());
+                      }
+                    )
+                  );
+                },  
               ),  
             ),
             Container(  

@@ -4,9 +4,9 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-Future<Album> createAlbum(String first,String second,String third,String fourth,String fifth,String six,String sev) async {
+Future<Album> createAlbum(String first,String second,String third,String fourth) async {
   final response = await http.post(
-    Uri.parse('https://21e7-103-56-225-5.in.ngrok.io'),
+    Uri.parse('https://21e7-103-56-225-5.in.ngrok.io/fertilizer-predict'),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
@@ -15,9 +15,6 @@ Future<Album> createAlbum(String first,String second,String third,String fourth,
       'second':second,
       'third':third,
       'fourth':fourth,
-      'fifth':fifth,
-      'six':six,
-      'sev':sev
     }),
   );
 
@@ -36,12 +33,12 @@ class Album {
   
   final String modules;
 
-
   const Album({required this.modules});
 
   factory Album.fromJson(Map<String, dynamic> json) {
     return Album(
-      modules: json['Modules']
+      modules: json['key'], 
+    
       // sev:json['sev'],
        
     );
@@ -49,23 +46,23 @@ class Album {
 }
 
 
-class CropDetection extends StatefulWidget {
-  const CropDetection({super.key});
+class FertilizerDetection extends StatefulWidget {
+  const FertilizerDetection({super.key});
 
   @override
-  State<CropDetection> createState() {
-    return _CropDetectionState();
+  State<FertilizerDetection> createState() {
+    return _FertilizerDetectionState();
   }
 }
 
-class _CropDetectionState extends State<CropDetection> {
+class _FertilizerDetectionState extends State<FertilizerDetection> {
   final List<TextEditingController> _controller = List.generate(74, (i) => TextEditingController());
   Future<Album>? _futureAlbum;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        resizeToAvoidBottomInset: false,
+        // resizeToAvoidBottomInset: false,
         appBar: AppBar(
           title: const Text('Create Data Example'),
         ),
@@ -101,21 +98,7 @@ class _CropDetectionState extends State<CropDetection> {
           decoration: const InputDecoration(hintText: 'Enter Title'),
         ),
         Container(height:20),
-        TextField(
-          controller: _controller[4],
-          decoration: const InputDecoration(hintText: 'Enter Title'),
-        ),
-        Container(height:20),
-        TextField(
-          controller: _controller[5],
-          decoration: const InputDecoration(hintText: 'Enter Title'),
-        ),
-        Container(height:20),
-        TextField(
-          controller: _controller[6],
-          decoration: const InputDecoration(hintText: 'Enter Title'),
-        ),
-        Container(height:20),
+        
         ElevatedButton(
           onPressed: () {
             setState(() {
@@ -124,9 +107,6 @@ class _CropDetectionState extends State<CropDetection> {
                 _controller[1].text,
                 _controller[2].text,
                 _controller[3].text,
-                _controller[4].text,
-                _controller[5].text,
-                _controller[6].text,
               );
             });
           },
@@ -145,7 +125,7 @@ class _CropDetectionState extends State<CropDetection> {
             body:Center(
             child:Column(
             children: <Widget>[
-             Text('we recommend ${snapshot.data!.modules}'),
+             Text(snapshot.data!.modules),
             ],
           )
          )
