@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 
 Future<Album> createAlbum(String first,String second,String third,String fourth) async {
   final response = await http.post(
-    Uri.parse('https://21e7-103-56-225-5.in.ngrok.io/fertilizer-predict'),
+    Uri.parse('https://fff3-43-243-80-77.in.ngrok.io /fertilizer-predict'),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
@@ -80,22 +80,22 @@ class _FertilizerDetectionState extends State<FertilizerDetection> {
       children: <Widget>[
         TextField(
           controller: _controller[0],
-          decoration: const InputDecoration(hintText: 'Enter Title'),
+          decoration: const InputDecoration(hintText: 'Enter crop'),
         ),
         Container(height:20),
         TextField(
           controller: _controller[1],
-          decoration: const InputDecoration(hintText: 'Enter Title'),
+          decoration: const InputDecoration(hintText: 'Enter value of N'),
         ),
         Container(height:20),
         TextField(
           controller: _controller[2],
-          decoration: const InputDecoration(hintText: 'Enter Title'),
+          decoration: const InputDecoration(hintText: 'Enter value of P'),
         ),
         Container(height:20),
         TextField(
           controller: _controller[3],
-          decoration: const InputDecoration(hintText: 'Enter Title'),
+          decoration: const InputDecoration(hintText: 'Enter value of K'),
         ),
         Container(height:20),
         
@@ -110,7 +110,7 @@ class _FertilizerDetectionState extends State<FertilizerDetection> {
               );
             });
           },
-          child: const Text('Create Data'),
+          child: const Text('Predict'),
         ),
       ],
     );

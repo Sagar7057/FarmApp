@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 
 Future<Album> createAlbum(String first,String second,String third,String fourth,String fifth,String six,String sev) async {
   final response = await http.post(
-    Uri.parse('https://21e7-103-56-225-5.in.ngrok.io'),
+    Uri.parse('https://f8c7-103-56-225-40.in.ngrok.io/crop'),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
@@ -67,7 +67,8 @@ class _CropDetectionState extends State<CropDetection> {
     return Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
-          title: const Text('Create Data Example'),
+          title: const Text('Crop Recommendation'),
+          backgroundColor: Colors.green,
         ),
         body: Container(
           alignment: Alignment.center,
@@ -83,37 +84,37 @@ class _CropDetectionState extends State<CropDetection> {
       children: <Widget>[
         TextField(
           controller: _controller[0],
-          decoration: const InputDecoration(hintText: 'Enter Title'),
+          decoration: const InputDecoration(hintText: 'Enter Value of N'),
         ),
         Container(height:20),
         TextField(
           controller: _controller[1],
-          decoration: const InputDecoration(hintText: 'Enter Title'),
+          decoration: const InputDecoration(hintText: 'Enter Value of P'),
         ),
         Container(height:20),
         TextField(
           controller: _controller[2],
-          decoration: const InputDecoration(hintText: 'Enter Title'),
+          decoration: const InputDecoration(hintText: 'Enter Value of K'),
         ),
         Container(height:20),
         TextField(
           controller: _controller[3],
-          decoration: const InputDecoration(hintText: 'Enter Title'),
+          decoration: const InputDecoration(hintText: 'Enter Temperature'),
         ),
         Container(height:20),
         TextField(
           controller: _controller[4],
-          decoration: const InputDecoration(hintText: 'Enter Title'),
+          decoration: const InputDecoration(hintText: 'Enter Humidity'),
         ),
         Container(height:20),
         TextField(
           controller: _controller[5],
-          decoration: const InputDecoration(hintText: 'Enter Title'),
+          decoration: const InputDecoration(hintText: 'Enter PH value'),
         ),
         Container(height:20),
         TextField(
           controller: _controller[6],
-          decoration: const InputDecoration(hintText: 'Enter Title'),
+          decoration: const InputDecoration(hintText: 'Enter rainfall'),
         ),
         Container(height:20),
         ElevatedButton(
@@ -130,7 +131,8 @@ class _CropDetectionState extends State<CropDetection> {
               );
             });
           },
-          child: const Text('Create Data'),
+          style: ElevatedButton.styleFrom(primary: Colors.green),
+          child: const Text('Predict'),
         ),
       ],
     );
@@ -144,6 +146,8 @@ class _CropDetectionState extends State<CropDetection> {
           return Scaffold(
             body:Center(
             child:Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
              Text('we recommend ${snapshot.data!.modules}'),
             ],

@@ -57,16 +57,7 @@ class _PreHarvestingState extends State<PreHarvesting> {
                 },  
               ),  
             ),
-            Container(  
-              margin: const EdgeInsets.all(20),  
-              child: TextButton(  
-                style: ButtonWidget().getButtonStyle(context),
-                child: const Text(
-                  'Pesticide Detection', 
-                ), 
-                onPressed: () {},  
-              ),  
-            ),  
+             
           ] 
     );
     
