@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'color.dart';
 import 'Pages/crop_care.dart';
@@ -9,34 +8,28 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+
   @override
   Widget build(BuildContext context) {
     
     return MaterialApp(
-      // theme: ThemeData.dark().copyWith(
-      //   scaffoldBackgroundColor: darkBlue,
-      // ),
-      theme: ThemeData(
-      primarySwatch: Colors.blue,
-      scaffoldBackgroundColor: Colors.tealAccent, //<-- SEE HERE
-    ),
+ 
+      theme: ThemeData(scaffoldBackgroundColor: const Color.fromARGB(255, 255, 255, 255)),
       debugShowCheckedModeBanner: false,
-      
-      home: Scaffold(
-        appBar: AppBar(
-        title: const Text('Crop Care'),
-        ), 
-        body:const Center(
-          child: MyWidget(),
-        ),
-      ),
+      home: const MyWidget()
     );
   }
 }
+
+
 
  class MyHttpOverrides extends HttpOverrides{
   @override

@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 
 Future<Album> createAlbum(String first,String second,String third,String fourth) async {
   final response = await http.post(
-    Uri.parse('https://fff3-43-243-80-77.in.ngrok.io /fertilizer-predict'),
+    Uri.parse('https://f9e1-2409-4040-e07-b737-7928-af33-b9fe-45e3.in.ngrok.io/fertilizer-predict'),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
@@ -38,8 +38,6 @@ class Album {
   factory Album.fromJson(Map<String, dynamic> json) {
     return Album(
       modules: json['key'], 
-    
-      // sev:json['sev'],
        
     );
   }
@@ -63,9 +61,24 @@ class _FertilizerDetectionState extends State<FertilizerDetection> {
   Widget build(BuildContext context) {
     return Scaffold(
         // resizeToAvoidBottomInset: false,
-        appBar: AppBar(
-          title: const Text('Create Data Example'),
-        ),
+         appBar:AppBar(
+             centerTitle:true,
+             title: const Text("Pre-Harvesting"),
+                  actions: <Widget>[
+                  IconButton(
+                   icon: const Icon(Icons.comment),
+                   tooltip: 'Comment Icon',
+                   onPressed: () {},
+                 ), //IconButton
+                  IconButton(
+                    icon: const Icon(Icons.settings),
+                    tooltip: 'Setting Icon',
+                    onPressed: () {},
+                ), //IconButton
+                ], //<Widget>[]
+           backgroundColor: Colors.green.shade900,
+           elevation: 50.0,
+          ),
         body: Container(
           alignment: Alignment.center,
           padding: const EdgeInsets.all(8.0),
@@ -110,6 +123,7 @@ class _FertilizerDetectionState extends State<FertilizerDetection> {
               );
             });
           },
+          style: ElevatedButton.styleFrom(primary: Colors.green.shade900),
           child: const Text('Predict'),
         ),
       ],

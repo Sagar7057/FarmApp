@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 
 Future<Album> createAlbum(String first,String second,String third,String fourth,String fifth,String six,String sev) async {
   final response = await http.post(
-    Uri.parse('https://f8c7-103-56-225-40.in.ngrok.io/crop'),
+    Uri.parse('https://f9e1-2409-4040-e07-b737-7928-af33-b9fe-45e3.in.ngrok.io/crop'),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
@@ -66,13 +66,25 @@ class _CropDetectionState extends State<CropDetection> {
   Widget build(BuildContext context) {
     return Scaffold(
         resizeToAvoidBottomInset: false,
-        appBar: AppBar(
-          title: const Text('Crop Recommendation'),
-          backgroundColor: Colors.green,
-        ),
+         appBar:AppBar(
+              centerTitle:true,
+              title: const Text("Pre-Harvesting"),
+              actions: <Widget>[
+                    IconButton(
+                      icon: const Icon(Icons.comment),
+                      tooltip: 'Comment Icon',
+                      onPressed: () {},
+                    ), //IconButton
+                    IconButton(
+                      icon: const Icon(Icons.settings),
+                      tooltip: 'Setting Icon',
+                      onPressed: () {},
+                    ), //IconButton
+                  ], //<Widget>[]
+                backgroundColor: Colors.green.shade900,
+                elevation: 50.0,
+              ),
         body: Container(
-          alignment: Alignment.center,
-          padding: const EdgeInsets.all(8.0),
           child: (_futureAlbum == null) ? buildColumn() : buildFutureBuilder(),
         ),
     );
@@ -131,7 +143,7 @@ class _CropDetectionState extends State<CropDetection> {
               );
             });
           },
-          style: ElevatedButton.styleFrom(primary: Colors.green),
+          style: ElevatedButton.styleFrom(primary: Colors.green.shade900),
           child: const Text('Predict'),
         ),
       ],
