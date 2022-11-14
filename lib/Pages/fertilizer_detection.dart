@@ -60,7 +60,7 @@ class _FertilizerDetectionState extends State<FertilizerDetection> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        // resizeToAvoidBottomInset: false,
+        resizeToAvoidBottomInset: false,
          appBar:AppBar(
              centerTitle:true,
              title: const Text("Pre-Harvesting"),
@@ -80,8 +80,9 @@ class _FertilizerDetectionState extends State<FertilizerDetection> {
            elevation: 50.0,
           ),
         body: Container(
-          alignment: Alignment.center,
-          padding: const EdgeInsets.all(8.0),
+        
+          padding: const EdgeInsets.all(20.0),
+          margin: const EdgeInsets.only(left: 30,right: 30),
           child: (_futureAlbum == null) ? buildColumn() : buildFutureBuilder(),
         ),
     );
