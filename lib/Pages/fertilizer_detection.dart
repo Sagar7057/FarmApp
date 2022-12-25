@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 
 Future<Album> createAlbum(String first,String second,String third,String fourth) async {
   final response = await http.post(
-    Uri.parse('https://f9e1-2409-4040-e07-b737-7928-af33-b9fe-45e3.in.ngrok.io/fertilizer-predict'),
+    Uri.parse('https://4f65-103-26-226-52.in.ngrok.io/fertilizer-predict'),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
@@ -17,7 +17,6 @@ Future<Album> createAlbum(String first,String second,String third,String fourth)
       'fourth':fourth,
     }),
   );
-
   if (response.statusCode == 200) {
     // If the server did return a 201 CREATED response,
     // then parse the JSON.
@@ -79,12 +78,8 @@ class _FertilizerDetectionState extends State<FertilizerDetection> {
            backgroundColor: Colors.green.shade900,
            elevation: 50.0,
           ),
-        body: Container(
+        body: (_futureAlbum == null) ? buildColumn() : buildFutureBuilder(),
         
-          padding: const EdgeInsets.all(20.0),
-          margin: const EdgeInsets.only(left: 30,right: 30),
-          child: (_futureAlbum == null) ? buildColumn() : buildFutureBuilder(),
-        ),
     );
   }
 
@@ -137,13 +132,13 @@ class _FertilizerDetectionState extends State<FertilizerDetection> {
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           return Scaffold(
-            body:Center(
+            body:SingleChildScrollView(child:Center(
             child:Column(
             children: <Widget>[
              Text(snapshot.data!.modules),
             ],
           )
-         )
+         ),)
          );
             
         } else if (snapshot.hasError) {

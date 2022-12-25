@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:farm/Pages/appbar.dart';
 import 'package:flutter/material.dart';
 import 'color.dart';
 import 'Pages/crop_care.dart';
@@ -24,6 +25,11 @@ class _MyAppState extends State<MyApp> {
  
       theme: ThemeData(scaffoldBackgroundColor: const Color.fromARGB(255, 255, 255, 255)),
       debugShowCheckedModeBanner: false,
+      builder: (context, child) {
+        return Scaffold(
+          body: child, //this child is dynamically replaced with corresponding page when we navigate
+        );
+      },
       home: const MyWidget()
     );
   }

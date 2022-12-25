@@ -1,3 +1,4 @@
+import 'package:farm/Pages/appbar.dart';
 import 'package:farm/Pages/post_harvesting.dart';
 import 'package:farm/Pages/pre_harvesting.dart';
 import 'package:flutter/material.dart';
@@ -43,29 +44,13 @@ class _MyWidgetState extends State<MyWidget> {
   }
 
 
+
   @override
   Widget build(BuildContext context) {
    
     return Scaffold(
-        appBar: AppBar(
-          centerTitle:true,
-               title: const Text("Crop Care"),
-                  actions: <Widget>[
-                  IconButton(
-                    icon: const Icon(Icons.comment),
-                    tooltip: 'Comment Icon',
-                    onPressed: () {},
-                  ), //IconButton
-                  IconButton(
-                    icon: const Icon(Icons.settings),
-                    tooltip: 'Setting Icon',
-                    onPressed: () {},
-                  ), //IconButton
-                ], //<Widget>[]
-                // backgroundColor: Colors.green.shade900,
-                elevation: 50.0,
-                backgroundColor: Colors.green.shade900,
-        ), 
+      
+      appBar: Header('crop care').getAppbar,
         body:const Center(
           child: MyBody(),
         ),
@@ -138,24 +123,7 @@ class _MyBodyState extends State<MyBody> {
                        context, MaterialPageRoute(
                          builder: (context) {
                           return Scaffold(
-                            appBar:AppBar(
-                                centerTitle:true,
-                                title: const Text("Pre-Harvesting"),
-                                    actions: <Widget>[
-                                    IconButton(
-                                      icon: const Icon(Icons.comment),
-                                      tooltip: 'Comment Icon',
-                                      onPressed: () {},
-                                    ), //IconButton
-                                    IconButton(
-                                      icon: const Icon(Icons.settings),
-                                      tooltip: 'Setting Icon',
-                                      onPressed: () {},
-                                    ), //IconButton
-                                  ], //<Widget>[]
-                              backgroundColor: Colors.green.shade900,
-                              elevation: 50.0,
-                            ),
+                            appBar: Header('Pre-Harvesting').getAppbar,
                             body: const Center(
                               child:PreHarvesting()
                             )
@@ -183,9 +151,7 @@ class _MyBodyState extends State<MyBody> {
                        context, MaterialPageRoute(
                          builder: (context) {
                           return Scaffold(
-                            appBar:AppBar(
-                              title:const Text('Harvesting'),
-                            ),
+                            appBar: Header('Harvesting').getAppbar,
                             body: const Center(
                               child:Harvesting()
                             )
@@ -211,9 +177,7 @@ class _MyBodyState extends State<MyBody> {
                        context, MaterialPageRoute(
                          builder: (context) {
                           return Scaffold(
-                            appBar:AppBar(
-                              title:const Text('Post_Harvesting'),
-                            ),
+                            appBar:Header('Post-Harvesting').getAppbar,
                             body: const Center(
                               child:PostHarvesting()
                             )
